@@ -13,7 +13,7 @@ entry:
 
 
 readFloppy:
-    mov  ch,1
+    mov  ch,0
     mov  dh,0
     mov  cl,2
     mov  bx,LOAD_ADDR

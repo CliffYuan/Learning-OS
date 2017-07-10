@@ -100,13 +100,14 @@ public class OS {
         //第一版本 在同一个扇区
         OS os=new OS();
         os.writeKernelBoot("/home/xnd/workspace-os/Learning-OS/version-1/boot.bat");
-        os.makeFloppy("/home/xnd/workspace-os/Learning-OS/version-1/os.img");
+        os.makeFloppy("/home/xnd/workspace-os/Learning-OS/version-1/os-1.img");
 
 
         //第二版本 内核加载器在第一个扇区，显示的内容在第二个扇区
         os=new OS();
         os.writeBoot("/home/xnd/workspace-os/Learning-OS/version-2/boot.bat");
-        os.writeKernel("/home/xnd/workspace-os/Learning-OS/version-2/kernel.bat",1,2);
+        //os.writeKernel("/home/xnd/workspace-os/Learning-OS/version-2/kernel.bat",1,2);  和 boot.asm中的 16行 mov ch,1 会发生错误，制作的软盘启动无法显示字符
+        os.writeKernel("/home/xnd/workspace-os/Learning-OS/version-2/kernel.bat",0,2);
         os.makeFloppy("/home/xnd/workspace-os/Learning-OS/version-2/os-2.img");
 
     }

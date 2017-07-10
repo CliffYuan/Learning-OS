@@ -98,7 +98,13 @@ public class Floppy {
 
         //write
         ArrayList<ArrayList<byte[]>> disk = floppy.get(magneticHead.ordinal());
-        disk.get(current_cylinder).set(current_sector,buf);
+        ArrayList<byte[]> cylinder=disk.get(current_cylinder);
+
+        //cylinder.set(current_sector,buf);
+
+
+        byte[] buffer = cylinder.get(this.current_sector);
+        System.arraycopy(buf, 0, buffer, 0, buf.length);
 
     }
 
